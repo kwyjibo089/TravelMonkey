@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace TravelMonkey.Models
+﻿namespace TravelMonkey.Models
 {
     public class ExtractTextFromPictureResult
     {
-        public string ExtractedText { get; }
+        public string ExtractedText { get { return string.Join(" ", TextLines); } }
+
+        public string DisplayText { get { return $"I see {ExtractedText}"; } }
 
         public string[] TextLines { get; }
 
@@ -19,7 +17,6 @@ namespace TravelMonkey.Models
         public ExtractTextFromPictureResult(string[] textLines)
         {
             TextLines = textLines;
-            ExtractedText = $"I see {string.Join(" ", textLines)}";
         }
     }
 }

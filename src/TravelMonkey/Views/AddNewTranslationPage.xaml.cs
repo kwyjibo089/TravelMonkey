@@ -12,11 +12,14 @@ namespace TravelMonkey.Views
 
             BindingContext = new AddNewTranslationPageViewModel();
 
-            MessagingCenter.Subscribe<AddNewTranslationPageViewModel>(this, Constants.PictureAddedMessage, 
+            MessagingCenter.Subscribe<AddNewTranslationPageViewModel>(this, Constants.TranslationPictureAddedMessage, 
                 async (vm) => await Navigation.PopModalAsync(true));
 
-            MessagingCenter.Subscribe<AddNewTranslationPageViewModel>(this, Constants.PictureFailedMessage, 
+            MessagingCenter.Subscribe<AddNewTranslationPageViewModel>(this, Constants.TranslationPictureFailedMessage, 
                 async (vm) => await DisplayAlert("Uh-oh!", "Can you hand me my glasses? Something went wrong while analyzing this image", "OK"));
+
+            MessagingCenter.Subscribe<AddNewTranslationPageViewModel>(this, Constants.TranslationSuccessMessage,
+                async (vm) => await Navigation.PushModalAsync(new TranslationResultPage(vm.DisplayText))); 
         }
 
         private void Button_Clicked(object sender, EventArgs e)

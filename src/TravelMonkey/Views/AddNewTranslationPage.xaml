@@ -20,7 +20,7 @@
                             <TapGestureRecognizer Command="{Binding TakePhotoCommand}" />
                         </Image.GestureRecognizers>
                     </Image>
-                    <Label Text="Tap to add picture" TextColor="White" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" HorizontalOptions="Fill" VerticalOptions="Fill" IsVisible="{Binding ShowImagePlaceholder}" FontSize="Large" FontFamily="LatoRegular">
+                    <Label Text="Tap to add picture" TextColor="LightBlue" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" HorizontalOptions="Fill" VerticalOptions="Fill" IsVisible="{Binding ShowImagePlaceholder}" FontSize="Large" FontFamily="LatoRegular">
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding TakePhotoCommand}" />
                         </Label.GestureRecognizers>
@@ -29,10 +29,10 @@
             </yummy:PancakeView>
 
             <yummy:PancakeView Grid.Row="2" BackgroundColor="#44FFFFFF" CornerRadius="5" Padding="2">
-                <Label Text="{Binding ExtractedText}" HorizontalTextAlignment="Center" />
+                <Label Text="{Binding DisplayText}" HorizontalTextAlignment="Center" />
             </yummy:PancakeView>
 
-            <Button Grid.Row="3" Text="Translate" FontAttributes="Bold" BackgroundColor="{Binding BackgroundColor}" TextColor="White" Command="{Binding TranslateTextCommand}" />
+            <Button Grid.Row="3" Text="Translate" FontAttributes="Bold" BackgroundColor="{Binding BackgroundColor}" TextColor="White" Command="{Binding TranslateTextCommand}"/>
 
             <Grid Grid.RowSpan="4" IsVisible="{Binding IsPosting}" BackgroundColor="#B0000000" Margin="-7">
                 <ActivityIndicator IsRunning="true" HorizontalOptions="Center" VerticalOptions="Center" Color="White" />

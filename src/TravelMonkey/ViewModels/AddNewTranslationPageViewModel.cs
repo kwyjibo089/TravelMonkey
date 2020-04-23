@@ -1,7 +1,6 @@
 ﻿using Acr.UserDialogs;
 using Plugin.Media;
 using Plugin.Media.Abstractions;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using TravelMonkey.Services;
 using Xamarin.Forms;
@@ -11,10 +10,6 @@ namespace TravelMonkey.ViewModels
     public class AddNewTranslationPageViewModel : BaseViewModel
     {
         private readonly ComputerVisionService _computerVisionService = new ComputerVisionService();
-
-        private readonly TranslationService _translationService = new TranslationService();
-
-        private Dictionary<string, string> _translations;
 
         public bool ShowImagePlaceholder => !ShowPhoto;
         public bool ShowPhoto => _photoSource != null;
@@ -48,11 +43,11 @@ namespace TravelMonkey.ViewModels
             set => Set(ref _backgroundColor, value);
         }
 
-        private string _extractedText;
-        public string ExtractedText
+        private string _displayText;
+        public string DisplayText
         {
-            get => _extractedText;
-            set => Set(ref _extractedText, value);
+            get => _displayText;
+            set => Set(ref _displayText, value);
         }
 
         public Command TakePhotoCommand { get; }
@@ -66,33 +61,22 @@ namespace TravelMonkey.ViewModels
 
         private async Task TranslateText()
         {
-            if (string.IsNullOrWhiteSpace(_extractedText))
-            {
-                await UserDialogs.Instance.AlertAsync("Please extract text from an image first", "No text recognized");
-                return;
-            }
-
-            await PostTextToTranslate();
-        }
-
-        private async Task PostTextToTranslate()
-        {            
             IsPosting = true;
 
             try
             {
-                var result = await _translationService.TranslateText(_extractedText);
+                if (string.IsNullOrWhiteSpace(_displayText))
+                {
+                    await UserDialogs.Instance.AlertAsync("Please choose an image/phote with text", "No text recognized");
+                    return;
+                }
 
-                if (!result.Succeeded)
-                    MessagingCenter.Send(this, Constants.TranslationFailedMessage);
-
-                
+                MessagingCenter.Send(this, Constants.TranslationSuccessMessage);
             }
             finally
             {
                 IsPosting = false;
             }
-
         }
 
         private async Task TakePhoto()
@@ -142,7 +126,7 @@ namespace TravelMonkey.ViewModels
                     return;
                 }
 
-                ExtractedText = result.Succeeded ? result.ExtractedText : result.ErrorMessage;                
+                DisplayText = result.Succeeded ? result.ExtractedText : result.ErrorMessage;                
             }
             finally
             {

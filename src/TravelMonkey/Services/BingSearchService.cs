@@ -12,7 +12,7 @@ namespace TravelMonkey.Services
 
         public async Task<List<Destination>> GetDestinations()
         {
-            var searchDestinations = new[] { "Seattle", "Maui", "Amsterdam", "Antarctica" };
+            var searchDestinations = new[] { "Switzerland", "Zurich", "Alps", "Berne" };
 
             try
             {

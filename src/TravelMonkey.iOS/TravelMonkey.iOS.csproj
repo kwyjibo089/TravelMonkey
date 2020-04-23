@@ -168,4 +168,19 @@
   <ItemGroup>
     <BundleResource Include="Resources\de.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\hi.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ko.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ja.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\th.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\zh.png" />
+  </ItemGroup>
 </Project>
