@@ -11,6 +11,7 @@ namespace TravelMonkey.ViewModels
 
         private string _inputText;
         private Dictionary<string, string> _translations;
+        private string _inputLanguage;
 
         public string InputText
         {
@@ -24,6 +25,12 @@ namespace TravelMonkey.ViewModels
 
                 TranslateText();
             }
+        }
+
+        public string InputLanguage
+        {
+            get => _inputLanguage;
+            set => Set(ref _inputLanguage, value);
         }
 
         public Dictionary<string, string> Translations
@@ -48,6 +55,7 @@ namespace TravelMonkey.ViewModels
                 MessagingCenter.Send(this, Constants.TranslationFailedMessage);
 
             Translations = result.Translations;
+            InputLanguage = result.InputLanguage;
         }
     }
 }

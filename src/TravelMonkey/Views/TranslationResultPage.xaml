@@ -11,7 +11,28 @@
 
             <Button Text="Close" Clicked="Button_Clicked" HorizontalOptions="Center" FontFamily="LatoBold" TextColor="White" />
 
-            <Entry Margin="15,0" Text="{Binding InputText, Mode=OneWay}" ReturnCommand="{Binding TranslateTextCommand}" ReturnCommandParameter="{Binding Text, Source={RelativeSource Mode=Self}}" FontSize="20" FontFamily="LatoRegular" BackgroundColor="Transparent" Placeholder="Enter text to translate" />
+            <Entry Margin="15,5" Text="{Binding InputText, Mode=OneWay}" ReturnCommand="{Binding TranslateTextCommand}" ReturnCommandParameter="{Binding Text, Source={RelativeSource Mode=Self}}" FontSize="20" FontFamily="LatoRegular" BackgroundColor="Transparent" Placeholder="Enter text to translate" />
+
+            <StackLayout Padding="10">
+                <yummy:PancakeView BackgroundColor="White" Margin="7" CornerRadius="10" HasShadow="True" MinimumHeightRequest="40">
+                    <Grid Margin="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.17*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Image Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Source="{Binding InputLanguage, StringFormat='{0}.png'}" WidthRequest="40" HorizontalOptions="Start" />
+                        <Label Grid.Column="1" Grid.Row="0" Text="Detected Language" FontFamily="LatoBold" FontSize="Small" VerticalOptions="End" />
+                        <Label Grid.Column="1" Grid.Row="1" Text="{Binding InputLanguage, Converter={StaticResource LanguageCodeToDescriptionConverter}, ConverterParameter={Binding InputLanguage}}" FontFamily="LatoBold" FontSize="20"/>
+                    </Grid>
+                </yummy:PancakeView>
+            </StackLayout>
+            
+            <Label Margin="15,5" Text="Translations" FontSize="20" FontFamily="LatoBold" BackgroundColor="Transparent"/>
 
             <ScrollView>
                 <StackLayout BindableLayout.ItemsSource="{Binding Translations}" Padding="10">
@@ -22,7 +43,8 @@
                             </Grid>
                         </DataTemplate>
                     </BindableLayout.EmptyViewTemplate>
-                    <BindableLayout.ItemTemplate>
+                    
+                    <BindableLayout.ItemTemplate>                        
                         <DataTemplate>
                             <yummy:PancakeView BackgroundColor="White" Margin="7" CornerRadius="10" HasShadow="True">
                                 <Grid Margin="10">
