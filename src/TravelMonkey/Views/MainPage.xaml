@@ -100,6 +100,17 @@
                     </BindableLayout.ItemTemplate>
                 </StackLayout>
             </ScrollView>
+
+            <!-- Pictures/Text Translator -->
+            <StackLayout Orientation="Horizontal">
+                <Label HorizontalOptions="Start" VerticalOptions="Center" Text="Translator" FontFamily="LatoBold" FontSize="20" Margin="20,20,20,0" TextColor="Black" />
+                <Label HorizontalOptions="EndAndExpand" VerticalOptions="Center" TextColor="#2687ee" Text="Translate" FontSize="12" FontFamily="LatoBold" Margin="20,20,20,0">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="AddNewTranslation_Tapped" />
+                    </Label.GestureRecognizers>
+                </Label>
+            </StackLayout>
+
         </StackLayout>
     </ScrollView>
 </ContentPage>

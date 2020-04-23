@@ -22,10 +22,7 @@
   <ItemGroup>
     <Folder Include="Resources\" />
     <Folder Include="Resources\Fonts\" />
-    <Folder Include="ViewModels\" />
-    <Folder Include="Models\" />
     <Folder Include="Effects\" />
-    <Folder Include="Views\" />
     <Folder Include="Services\" />
     <Folder Include="Data\" />
     <Folder Include="Models\CognitiveServices\" />
@@ -46,6 +43,9 @@
     <EmbeddedResource Include="Resources\Fonts\fa-solid.otf" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="Views\AddNewTranslationPage.xaml.cs">
+      <DependentUpon>AddNewTranslationPage.xaml</DependentUpon>
+    </Compile>
     <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Views\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
       <SubType>Code</SubType>
