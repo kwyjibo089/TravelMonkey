@@ -172,7 +172,9 @@
       </Generator>
     </AndroidResource>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\de.png" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TravelMonkey\TravelMonkey.csproj">
       <Project>{04991790-FBB2-415A-9531-268B4193DB3E}</Project>

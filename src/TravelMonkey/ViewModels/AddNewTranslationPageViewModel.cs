@@ -1,9 +1,8 @@
 ﻿using Acr.UserDialogs;
 using Plugin.Media;
 using Plugin.Media.Abstractions;
+using System.Collections.Generic;
 using System.Threading.Tasks;
-using TravelMonkey.Data;
-using TravelMonkey.Models;
 using TravelMonkey.Services;
 using Xamarin.Forms;
 
@@ -12,6 +11,10 @@ namespace TravelMonkey.ViewModels
     public class AddNewTranslationPageViewModel : BaseViewModel
     {
         private readonly ComputerVisionService _computerVisionService = new ComputerVisionService();
+
+        private readonly TranslationService _translationService = new TranslationService();
+
+        private Dictionary<string, string> _translations;
 
         public bool ShowImagePlaceholder => !ShowPhoto;
         public bool ShowPhoto => _photoSource != null;
@@ -38,11 +41,11 @@ namespace TravelMonkey.ViewModels
             set => Set(ref _isPosting, value);
         }
 
-        private Color _pictureAccentColor = Color.SteelBlue;
-        public Color PictureAccentColor
+        private Color _backgroundColor = Color.SteelBlue;
+        public Color BackgroundColor
         {
-            get => _pictureAccentColor;
-            set => Set(ref _pictureAccentColor, value);
+            get => _backgroundColor;
+            set => Set(ref _backgroundColor, value);
         }
 
         private string _extractedText;
@@ -53,16 +56,43 @@ namespace TravelMonkey.ViewModels
         }
 
         public Command TakePhotoCommand { get; }
-        public Command AddPictureCommand { get; }
+        public Command TranslateTextCommand { get; }
 
         public AddNewTranslationPageViewModel()
         {
             TakePhotoCommand = new Command(async () => await TakePhoto());
-            AddPictureCommand = new Command(() =>
-             {
-                 MockDataStore.Pictures.Add(new PictureEntry { Description = _extractedText, Image = _photoSource });
-                 MessagingCenter.Send(this, Constants.PictureAddedMessage);
-             });
+            TranslateTextCommand = new Command(async () => await TranslateText());
+        }
+
+        private async Task TranslateText()
+        {
+            if (string.IsNullOrWhiteSpace(_extractedText))
+            {
+                await UserDialogs.Instance.AlertAsync("Please extract text from an image first", "No text recognized");
+                return;
+            }
+
+            await PostTextToTranslate();
+        }
+
+        private async Task PostTextToTranslate()
+        {            
+            IsPosting = true;
+
+            try
+            {
+                var result = await _translationService.TranslateText(_extractedText);
+
+                if (!result.Succeeded)
+                    MessagingCenter.Send(this, Constants.TranslationFailedMessage);
+
+                
+            }
+            finally
+            {
+                IsPosting = false;
+            }
+
         }
 
         private async Task TakePhoto()
@@ -88,10 +118,10 @@ namespace TravelMonkey.ViewModels
             }
 
             if (_photo != null)
-                await Post();
+                await PostImage();
         }
 
-        private async Task Post()
+        private async Task PostImage()
         {
             if (_photo == null)
             {
