@@ -1,8 +1,18 @@
-﻿namespace TravelMonkey.Models
+﻿using System.Globalization;
+
+namespace TravelMonkey.Models
 {
     public class ExtractTextFromPictureResult
     {
-        public string ExtractedText { get { return string.Join(" ", TextLines); } }
+        public string ExtractedText
+        { 
+            get
+            {
+                return (TextLines == null || TextLines.Length==0) ?
+                    string.Empty :
+                    CultureInfo.InvariantCulture.TextInfo.ToTitleCase(string.Join(" ", TextLines).ToLower());
+            }
+        }
 
         public string DisplayText { get { return $"I see {ExtractedText}"; } }
 

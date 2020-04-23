@@ -13,8 +13,8 @@
 
             <Entry Margin="15,5" Text="{Binding InputText, Mode=OneWay}" ReturnCommand="{Binding TranslateTextCommand}" ReturnCommandParameter="{Binding Text, Source={RelativeSource Mode=Self}}" FontSize="20" FontFamily="LatoRegular" BackgroundColor="Transparent" Placeholder="Enter text to translate" />
 
-            <StackLayout Padding="10">
-                <yummy:PancakeView BackgroundColor="White" Margin="7" CornerRadius="10" HasShadow="True" MinimumHeightRequest="40">
+            <StackLayout Padding="10" MinimumHeightRequest="90">
+                <yummy:PancakeView BackgroundColor="White" Margin="7" CornerRadius="10" HasShadow="True">
                     <Grid Margin="10">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="0.17*" />
