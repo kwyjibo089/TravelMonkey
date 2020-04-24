@@ -10,7 +10,7 @@ namespace TravelMonkey.Models
             {
                 return (TextLines == null || TextLines.Length==0) ?
                     string.Empty :
-                    CultureInfo.InvariantCulture.TextInfo.ToTitleCase(string.Join(" ", TextLines).ToLower());
+                    string.Join(" ", TextLines).ToLower();
             }
         }
 

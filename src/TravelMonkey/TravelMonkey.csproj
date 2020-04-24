@@ -25,7 +25,6 @@
     <Folder Include="Resources\Fonts\" />
     <Folder Include="Effects\" />
     <Folder Include="Data\" />
-    <Folder Include="Models\CognitiveServices\" />
     <Folder Include="Converters\" />
   </ItemGroup>
   <ItemGroup>
@@ -34,8 +33,6 @@
     <None Remove="Resources\Fonts\Lato-Regular.ttf" />
     <None Remove="Resources\Fonts\fa-regular.otf" />
     <None Remove="Resources\Fonts\fa-solid.otf" />
-    <None Remove="Resources\ssml\NeuralSSML.xml" />
-    <None Remove="Resources\ssml\SimpleSSML.xml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\Fonts\Lato-Black.ttf" />
@@ -43,12 +40,6 @@
     <EmbeddedResource Include="Resources\Fonts\Lato-Regular.ttf" />
     <EmbeddedResource Include="Resources\Fonts\fa-regular.otf" />
     <EmbeddedResource Include="Resources\Fonts\fa-solid.otf" />
-    <EmbeddedResource Include="Resources\ssml\NeuralSSML.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Resources\ssml\SimpleSSML.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Update="Views\AddNewTranslationPage.xaml.cs">
