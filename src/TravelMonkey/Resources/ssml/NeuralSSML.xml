@@ -1,0 +1,7 @@
+﻿<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xmlns:mstts="https://www.w3.org/2001/mstts" xml:lang="{0}">
+  <voice name="{1}">
+    <mstts:express-as style="{2}">
+      This is awesome!
+    </mstts:express-as>
+  </voice>
+</speak>

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using TravelMonkey.Services;
 using Xamarin.Forms;
 
@@ -26,7 +27,7 @@ namespace TravelMonkey.ViewModels
                 TranslateText();
             }
         }
-
+              
         public string InputLanguage
         {
             get => _inputLanguage;
@@ -41,7 +42,6 @@ namespace TravelMonkey.ViewModels
                 Set(ref _translations, value);
             }
         }
-
         public Command<string> TranslateTextCommand => new Command<string>((inputText) =>
         {
             InputText = inputText;

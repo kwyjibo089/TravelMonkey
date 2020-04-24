@@ -1,0 +1,5 @@
+﻿<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="{0}">
+  <voice name="{1}">
+    This text will get converted into synthesized speech.
+  </voice>
+</speak>
