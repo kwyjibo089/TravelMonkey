@@ -22,7 +22,7 @@ namespace TravelMonkey.Services
             {
                 // Build the request.
                 request.Method = HttpMethod.Post;
-                request.RequestUri = new Uri(ApiKeys.TranslationsEndpoint + "/translate?api-version=3.0&to=en&to=de&to=es&to=fr");
+                request.RequestUri = new Uri(ApiKeys.TranslationsEndpoint + "/translate?api-version=3.0&to=en&to=de&to=es&to=fr&to=zh&to=ja&to=ko&to=hi&to=th");
                 request.Content = new StringContent(requestBody, Encoding.UTF8, "application/json");
                 request.Headers.Add("Ocp-Apim-Subscription-Key", ApiKeys.TranslationsApiKey);
 

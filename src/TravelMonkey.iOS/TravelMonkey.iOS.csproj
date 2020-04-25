@@ -186,4 +186,16 @@
   <ItemGroup>
     <BundleResource Include="Resources\speaker.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\fi.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\it.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\speaking.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sv.png" />
+  </ItemGroup>
 </Project>

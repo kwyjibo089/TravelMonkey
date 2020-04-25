@@ -17,19 +17,18 @@
                 <yummy:PancakeView BackgroundColor="White" Margin="7" CornerRadius="10" HasShadow="True">
                     <Grid Margin="10">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="0.25*" />
+                            <ColumnDefinition Width="0.17*" />
                             <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="0.2*" />
                         </Grid.ColumnDefinitions>
 
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*" />
                             <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
-                        <Image Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Source="{Binding InputLanguage, StringFormat='{0}.png'}" WidthRequest="40" HorizontalOptions="Start" />
+                        <Image Grid.Column="0" Grid.Row="0" Source="{Binding InputLanguage, StringFormat='{0}.png'}" WidthRequest="40" HorizontalOptions="Start" />
+                        <ImageButton Grid.Column="0" BackgroundColor="White" Grid.Row="1" Source="speaking.png" Clicked="ImageButton_Clicked" HorizontalOptions="End" />
                         <Label Grid.Column="1" Grid.Row="0" Text="Detected Language" FontFamily="LatoBold" FontSize="Small" />
                         <Label Grid.Column="1" Grid.Row="1" Text="{Binding InputLanguage, Converter={StaticResource LanguageCodeToDescriptionConverter}, ConverterParameter={Binding InputLanguage}}" FontFamily="LatoBold" FontSize="20"/>
-                        <ImageButton Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" Source="speaker.png" Clicked="ImageButton_Clicked" HorizontalOptions="End" VerticalOptions="Center"/>
                     </Grid>
                 </yummy:PancakeView>
             </StackLayout>
@@ -49,21 +48,20 @@
                     <BindableLayout.ItemTemplate>                        
                         <DataTemplate>
                             <yummy:PancakeView BackgroundColor="White" Margin="7" CornerRadius="10" HasShadow="True">
-                                <Grid Margin="10">
+                                <Grid Margin="10" HeightRequest="150">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="0.25*" />
+                                        <ColumnDefinition Width="0.17*" />
                                         <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="0.2*" />
                                     </Grid.ColumnDefinitions>
 
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="0.2*" />
-                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="*" />                                        
                                     </Grid.RowDefinitions>
-                                    <Image Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Source="{Binding Key, StringFormat='{0}.png'}" WidthRequest="40" HorizontalOptions="Start" VerticalOptions="Center"/>
-                                    <Label Grid.Column="1" Grid.Row="0" Padding="1" Text="{Binding Key, Converter={StaticResource LanguageCodeToDescriptionConverter}, ConverterParameter={Binding Key}}" FontFamily="LatoBold" FontSize="Title" VerticalOptions="Center"/>
-                                    <Label Grid.Column="1" Grid.Row="1" Padding="1" Text="{Binding Value}" FontFamily="LatoRegular" FontSize="20" VerticalOptions="Center"/>
-                                    <ImageButton Grid.Column="2" Grid.RowSpan="2" Source="speaker.png" Clicked="SpeechButton_Clicked" BindingContext="{Binding Key}" HorizontalOptions="End" VerticalOptions="Center"/>
+                                    <Image Grid.Column="0" Grid.Row="0" Source="{Binding Key, StringFormat='{0}.png'}" HorizontalOptions="Start" VerticalOptions="Center" />
+                                    <ImageButton Grid.Column="0" Grid.Row="1" BackgroundColor="White" Source="speaking.png" Clicked="SpeechButton_Clicked" BindingContext="{Binding Key}" HorizontalOptions="Start" VerticalOptions="Center"/>
+                                    <Label Grid.Column="1" Grid.Row="0" Text="{Binding Key, Converter={StaticResource LanguageCodeToDescriptionConverter}, ConverterParameter={Binding Key}}" FontFamily="LatoBold" FontSize="Small" HorizontalOptions="Start" VerticalOptions="Center" />
+                                    <Label Grid.Column="1" Grid.Row="1" Text="{Binding Value}" FontFamily="LatoRegular" FontSize="20" HorizontalOptions="Start" VerticalOptions="Start"/>                                    
                                 </Grid>
                             </yummy:PancakeView>
                         </DataTemplate>

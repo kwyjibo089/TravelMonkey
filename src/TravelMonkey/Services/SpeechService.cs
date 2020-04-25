@@ -28,17 +28,18 @@ namespace TravelMonkey.Services
                     voicesRequest.Headers.Authorization = AuthenticationHeaderValue.Parse("Bearer " + token);
                     voicesRequest.Headers.UserAgent.Add(new ProductInfoHeaderValue("TravelMonkey", "1.0"));
                     var voicesResponse = await client.SendAsync(voicesRequest);
+                    voicesResponse.EnsureSuccessStatusCode();
                     var jsonString = await voicesResponse.Content.ReadAsStringAsync();
 
                     VoiceResult.Voices = JsonConvert.DeserializeObject<Voice[]>(jsonString);
                 }
 
                 // try to get a neural voice
-                var voice = VoiceResult.Voices.FirstOrDefault(v => v.VoiceType == VoiceType.Neural && v.Locale.StartsWith(language));
+                var voice = VoiceResult.Voices.FirstOrDefault(v => v.VoiceType == VoiceType.Neural && v.Locale.StartsWith(language.Substring(0, 2)));
                 if(voice == null)
                 {
                     // fallback is normal voice
-                    voice = VoiceResult.Voices.FirstOrDefault(v => v.Locale.StartsWith(language));
+                    voice = VoiceResult.Voices.FirstOrDefault(v => v.Locale.StartsWith(language.Substring(0, 2)));
                 }
                 
                 var ssml = string.Format(SSML, language, voice.Name, text);
@@ -52,6 +53,7 @@ namespace TravelMonkey.Services
                 audioRequest.Headers.Add("X-Microsoft-OutputFormat", "audio-24khz-48kbitrate-mono-mp3");
 
                 var audioResult = client.SendAsync(audioRequest).Result;
+                audioResult.EnsureSuccessStatusCode();
 
                 var audio = Plugin.SimpleAudioPlayer.CrossSimpleAudioPlayer.Current;
                 audio.Load(audioResult.Content.ReadAsStreamAsync().Result);
