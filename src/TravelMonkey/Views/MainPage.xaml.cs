@@ -47,5 +47,10 @@ namespace TravelMonkey.Views
             await Navigation.PushModalAsync(new TranslationResultPage(TranslateTextEntry.Text));
             TranslateTextEntry.Text = "";
         }
+
+        private async void SpeechTranslation_Tapped(object sender, EventArgs e)
+        {
+            await Application.Current.MainPage.Navigation.PushModalAsync(new NavigationPage(new SpeechTranslation()));
+        }
     }
 }
