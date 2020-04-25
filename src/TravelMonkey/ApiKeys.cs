@@ -7,7 +7,7 @@
 		public static string TranslationsApiKey = "";
 		public static string BingImageSearch = "";
 		public static string SpeechAPIKey = "";
-		public static string AzureRegion = "uksouth";
+		public static string AzureRegion = "";
 
 		// Change this to the Azure Region you are using
 		public static string ComputerVisionEndpoint = "https://westeurope.api.cognitive.microsoft.com/";
