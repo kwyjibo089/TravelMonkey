@@ -318,8 +318,6 @@ namespace TravelMonkey.ViewModels
             DeviceSpeechTranslationConfig.VoiceName = SelectedTargetLanguage.Voice;
             DeviceSpeechTranslationConfig.AddTargetLanguage(SelectedTargetLanguage.Code);
 
-            Player.Play(WAVFilePath);
-
             DeviceAudioConfig = AudioConfig.FromWavFileInput(WAVFilePath);
 
             DeviceSpeechTranslationConfig.SetSpeechSynthesisOutputFormat(SpeechSynthesisOutputFormat.Riff16Khz16BitMonoPcm);
